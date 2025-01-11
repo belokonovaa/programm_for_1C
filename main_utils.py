@@ -5,6 +5,8 @@ import time
 
 from fuzzywuzzy import process, fuzz
 
+from settings import delete_time
+
 
 def find_differences(str1, str2):
     """
@@ -117,5 +119,5 @@ def clear_processed_folder(folder_path):
         folder_age = current_time - os.path.getmtime(folder_path_to_check)
 
         # Если папка старше 7 суток (604800 секунд), удаляем её вместе с содержимым
-        if folder_age > 604800:
+        if folder_age > delete_time:
             shutil.rmtree(folder_path_to_check)
